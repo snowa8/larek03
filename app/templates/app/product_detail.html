@@ -1,0 +1,99 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>{{ product.name }}</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>{{ product.name }}</h1>-->
+<!--    <p>description: {{ product.description }}</p>-->
+<!--    <p>category: {{ product.category.name }}</p>-->
+<!--    <div class="col-md-8">-->
+<!--        <img src="{{ product.image.url }}" alt="" height="35%" width="25%">-->
+<!--    </div>-->
+<!--    <br>-->
+<!--<pre style="font-size:150%; font-family:verdana;"><a href="http://127.0.0.1:8000/">Menu</a></pre>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+           <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        header {
+            background-color: #888bff;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-bottom: 9.2px;
+        }
+        .container {
+            width: 30%;
+            max-width: 550px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(10,10,10,10.1);
+        }
+        .portfolio-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 3px solid #ddd;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <pre style="font-size:100%; font-family:verdana;"><a href="http://127.0.0.1:8000/"><h1>home</h1></a></pre>
+    </header>
+    <br>
+    <div class="container">
+        <div class="portfolio-item">
+
+                    <div class="col-md-8">
+        <img src="{{ product.image.url }}" alt="" height="35%" width="100%">
+    </div>
+
+            <hr>
+<h3>name: {{ product.name }}</h3>
+            <hr>
+<h3>description: {{ product.description }}</h3>
+            <hr>
+<h3>price: {{ product.price }}</h3>
+            <hr>
+<h3>id: {{ product.pk }}</h3>
+            <hr>
+<h3>category: {{ product.category }}</h3>
+        </div>
+
+        <div class="portfolio-item">
+                        <h2>customers</h2>
+    <ul>
+    {% for customer in product.customers.all %}
+                <li>
+    <a href="{% url 'customer_detail' customer.pk %}">{{ customer.first_name }} * {{ customer.last_name }}</a>
+            </li>
+    {% endfor %}
+    </ul>
+            <hr>
+                <a href="{% url 'product_list' %}"><h3>products</h3></a>
+    </div>
+</div>
+<br>
+<br>
+</body>
